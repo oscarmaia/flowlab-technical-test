@@ -2,6 +2,7 @@ import { Navbar } from "@/components";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GlobalContextProvider } from "./contexts/GlobalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} debug-screens`}>
-        <Navbar />
-        {children}
+      <body className={`${inter.className}`}>
+        <GlobalContextProvider>
+          <Navbar />
+          {children}
+        </GlobalContextProvider>
       </body>
     </html>
   );
