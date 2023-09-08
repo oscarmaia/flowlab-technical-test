@@ -9,9 +9,6 @@ import {
 } from "react";
 
 // Create a new context
-type DataType = {
-  products: ProductProps;
-};
 
 interface ContextProps {
   userId: string;
@@ -29,9 +26,9 @@ const GlobalContext = createContext<ContextProps>({
 });
 
 // Create a custom provider component
-export function GlobalContextProvider({ children }) {
+export function GlobalContextProvider({ children }: any) {
   const [userId, setUserId] = useState("");
-  const [data, setData] = useState<[] | DataType[]>([]);
+  const [data, setData] = useState<[] | ProductProps[]>([]);
 
   return (
     <GlobalContext.Provider value={{ userId, setUserId, data, setData }}>
