@@ -1,17 +1,21 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { ProductProps } from "@/types";
 import Link from "next/link";
 import { CustomButtom } from ".";
+import { useGlobalContext } from "@/app/contexts/GlobalContext";
 
 export default function ProductCard(props: ProductProps) {
+  const { data, setData } = useGlobalContext();
   const formattedPrice = (props.price / 100).toFixed(2).replace(".", ",");
   const formattedPriceForCreditCard = (props.price / 5 / 100)
     .toFixed(2)
     .replace(".", ",");
   function addToCart() {
-    console.log("add item to cart");
+    const arr = [...data];
+    arr.push(props);
+    setData(arr);
   }
   return (
     <div className="h-[658px] w-[309px] flex flex-col justify-between items-center">

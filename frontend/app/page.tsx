@@ -2,6 +2,7 @@ import Image from "next/image";
 import ProductCard from "../components/ProductCard";
 import { Products } from "@/constants";
 export default function Home() {
+
   return (
     <main>
       <div className="sm:flex justify-center items-center m-auto 2xl:max-w-[1440px]">
@@ -23,6 +24,7 @@ export default function Home() {
       <div className="flex gap-[48px] justify-center mt-[48px] mb-[48px]  flex-wrap">
         {Products.map((el) => (
           <ProductCard
+            description={el.description}
             name={el.name}
             id={el.id}
             key={el.id}

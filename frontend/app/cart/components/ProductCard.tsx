@@ -7,6 +7,7 @@ import minus from "@/public/icons/Minus.svg";
 import trash from "@/public/icons/TrashSimple.svg";
 import { ProductProps } from "@/types";
 
+
 export default function ProductCart({
   image,
   name,
@@ -14,6 +15,7 @@ export default function ProductCart({
   description,
   id,
 }: ProductProps) {
+  
   const [quantity, setQuantity] = useState(1);
   function increaseQuantity() {
     setQuantity(quantity + 1);

@@ -1,12 +1,14 @@
+'use client'
 import React from "react";
 import ProductCart from "./components/ProductCard";
-import { Products } from "@/constants";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Cart() {
-  const cartProducts = Products;
+  
+  const { data } = useGlobalContext();
   return (
     <div className="flex flex-col 2xl:max-w-[1440px] sm:mt-[38px] gap-3 mt-3">
-      {cartProducts.map((el) => {
+      {data.map((el) => {
         return (
           <ProductCart
             description={el.description}
