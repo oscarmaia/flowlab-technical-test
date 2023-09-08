@@ -6,12 +6,17 @@ import card from "@/public/icons/credit-card.svg";
 import SecundaryImage from "../components/SecundaryImage";
 import PaymentMethod from "../components/PaymentMethod";
 import CustomButton from "@/components/CustomButton";
+import { useGlobalContext } from "@/app/contexts/GlobalContext";
+import { ProductProps } from "@/types";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
+  const { data, setData } = useGlobalContext();
   const id = parseInt(params.id);
-  const product = Products[id];
-  function buttonClick() {
-    console.log(product.price);
+  const product = Products[id] as ProductProps;
+  function addToCart() {
+    const arr = [...data];
+    arr.push(product);
+    setData(arr);
   }
   return (
     <div className="flex m-auto justify-center 2xl:max-w-[1440px] sm:mt-[48px]">
@@ -19,8 +24,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         {/* left side */}
         <div className="flex flex-col xl:flex-row justify-end items-center gap-[24px] p-3">
           <div className="flex xl:flex-col gap-6 justify-between order-2 xl:order-1">
-            {product.secundary_images.map((el, i) => (
-              <SecundaryImage key={i} image={product.secundary_images[i]} />
+            {product?.secundary_images?.map((el, i) => (
+              <SecundaryImage key={i} image={el} />
             ))}
           </div>
           <div className="h-[400px] w-[300px] sm:w-[467px] sm:h-[471px] order-1 xl:order-2 relative">
@@ -55,7 +60,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 title="Adicionar ao carrinho"
                 containerStyles="p-[12px] h-[48px] bg-primary_color rounded-lg"
                 textStyles="text-white"
-                handleClick={buttonClick}
+                handleClick={addToCart}
               />
             </div>
           </div>

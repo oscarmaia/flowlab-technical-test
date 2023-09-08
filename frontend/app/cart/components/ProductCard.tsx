@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Products } from "@/constants";
 import Image from "next/image";
 import plus from "@/public/icons/Plus.svg";
 import minus from "@/public/icons/Minus.svg";

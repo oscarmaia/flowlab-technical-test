@@ -6,7 +6,7 @@ export interface ProductProps {
   price: number;
   id: number;
   description: string;
-  secundary_images?: SecundaryImageProps[];
+  secundary_images?: string[];
 }
 
 export interface PaymentMethodProps {
@@ -15,9 +15,6 @@ export interface PaymentMethodProps {
   discount: boolean;
 }
 
-export interface SecundaryImageProps {
-  image: string;
-}
 
 export interface CustomButtonProps {
   isDisabled?: boolean;
