@@ -11,9 +11,40 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
-  email String  @unique
-  name  String
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  name     String
   password String
-  phone String
+  phone    String
+}
+
+model Product {
+  id          Int           @id @default(autoincrement())
+  name        String
+  description String
+  price       Int
+  image       String
+  discount    Discount?
+  CartProduct CartProduct[]
+}
+
+model Discount {
+  id        Int     @id @default(autoincrement())
+  amount    Int
+  productId Int     @unique
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Cart {
+  id          Int           @id @default(autoincrement())
+  userId      Int           @unique
+  CartProduct CartProduct[]
+}
+
+model CartProduct {
+  id        Int     @id @default(autoincrement())
+  cartId    Int
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
 }
