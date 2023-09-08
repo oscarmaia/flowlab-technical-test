@@ -5,13 +5,14 @@ export interface ProductProps {
   name: string;
   price: number;
   id: number;
+  description: string;
   secundary_images?: SecundaryImageProps[];
 }
 
 export interface PaymentMethodProps {
   image: string;
   price: number;
-  discount:boolean;
+  discount: boolean;
 }
 
 export interface SecundaryImageProps {
